@@ -17,7 +17,7 @@ body{
   background-color: #1b1b32;
   font-family: Roboto, sans-serif;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap:wrap;
   justify-content: center;
   align-items: center;
 }
@@ -31,4 +31,10 @@ body{
   justify-content: center;
   padding-bottom: 10;
   font-size: 3em;
+}
+.clock-container{
+  background-color: azure;
+  width: 500px;
+  min-height: 500px;
+  border-radius: 20px;
 }
