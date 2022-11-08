@@ -32,6 +32,13 @@ body{
   padding-bottom: 10;
   font-size: 3em;
 }
+
+.break-session-controls-container{
+  width: 500px;
+  min-height: 200px;
+  border-radius: 20px;
+  display: flex;
+}
 .clock-container{
   background-color: azure;
   width: 500px;
