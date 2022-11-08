@@ -1,7 +1,7 @@
 .session-label{
   background-color: blueviolet;
   width: 240px;
-  height: 240px;
+  height: 190px;
   border-radius: 20px;
   margin: 5px;
   display: flex;
@@ -21,5 +21,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.3em;
+  font-size: 2em;
 }
