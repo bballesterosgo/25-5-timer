@@ -2,10 +2,10 @@ import React from "react";
 
 import '../stylesheet/BreakLabel.css'
 
-function BreakLabel (){
+function BreakLabel ({ breakLength }){
 
   return <div className='break-label' id='break-label'>
-    <p>Break Length</p>
+    <p>{breakLength}</p>
   </div>
 }
 
