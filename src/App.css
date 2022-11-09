@@ -45,4 +45,7 @@ body{
   min-height: 500px;
   border-radius: 20px;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }

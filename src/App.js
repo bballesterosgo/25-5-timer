@@ -22,9 +22,9 @@ const [breakLength,setBreakLength] = useState(5);
           <SessionLabel 
             sessionLength={sessionLength}/>
         </div>
-      <div className='display-container'>
-        <ClockDisplay />
-      </div>
+        <div className='display-container'>
+          <ClockDisplay />
+        </div>
       </div>
     </div>
   );
