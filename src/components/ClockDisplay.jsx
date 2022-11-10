@@ -4,12 +4,12 @@ import { AiOutlinePlayCircle,AiOutlinePauseCircle,AiOutlineSync } from "react-ic
 
 import '../stylesheet/ClockDisplay.css'
 
-function ClockDisplay () {
+function ClockDisplay ({sessionLength,breakLength}) {
 
-  
+
   return <div>
     <p>Session</p>
-    <p>35</p>
+    <p>{sessionLength}</p>
     <AiOutlinePlayCircle />
     <AiOutlinePauseCircle />
     <AiOutlineSync />
