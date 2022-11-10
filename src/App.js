@@ -12,12 +12,19 @@ const [breakLength,setBreakLength] = useState(5);
 
 const incremenBreakTime = () => {
   setBreakLength(breakLength + 1)
-}
+};
 
 const decrementBreakTime = () => {
   setBreakLength(breakLength - 1)
-}
+};
 
+const incremenSessionTime = () => {
+  setSessionLength(sessionLength +1)
+};
+
+const decrementSessionkTime = () => {
+  setSessionLength(sessionLength  -1)
+};
   return (
     <div className="App">
       <div className='title-logo-container'>
@@ -26,11 +33,13 @@ const decrementBreakTime = () => {
       <div className='clock-container'>
         <div className='break-session-controls-container'>
           <BreakLabel 
-            breakLength={breakLength}
-            plusBreakTime={incremenBreakTime} 
-            lessBreakTime={decrementBreakTime}/>
+            breakLength = { breakLength }
+            plusBreakTime = { incremenBreakTime } 
+            lessBreakTime = { decrementBreakTime } />
           <SessionLabel 
-            sessionLength={sessionLength}/>
+            sessionLength = { sessionLength } 
+            plusSessionTime = { incremenSessionTime } 
+            lessSessionTime = { decrementSessionkTime } />
         </div>
         <div className='display-container'>
           <ClockDisplay 

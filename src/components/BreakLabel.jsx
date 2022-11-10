@@ -12,7 +12,7 @@ function BreakLabel ({ breakLength,plusBreakTime,lessBreakTime }){
             <h2>Break Length</h2>
           </div>
           <div className='break-label-controls'>
-            <GoDash onClick={lessBreakTime}/>
+            <GoDash onClick={ lessBreakTime }/>
             <p>{ breakLength }</p>
             <GoPlus onClick={ plusBreakTime } />
           </div>

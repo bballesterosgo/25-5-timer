@@ -3,7 +3,7 @@ import { GoDash,GoPlus } from "react-icons/go";
 
 import '../stylesheet/SessionLabel.css'
 
-function SessionLabel ({ sessionLength }){
+function SessionLabel ({ sessionLength,plusSessionTime,lessSessionTime }){
 
 
   return <div className='session-label' id='session-label'>
@@ -11,9 +11,9 @@ function SessionLabel ({ sessionLength }){
             <h2>Session Length</h2>
           </div>
           <div className='session-label-controls'>
-            <GoDash />
+            <GoDash onClick = { lessSessionTime } />
             <p>{ sessionLength }</p>
-            <GoPlus />
+            <GoPlus onClick= { plusSessionTime }/>
           </div>
         </div>
 }
