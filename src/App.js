@@ -6,24 +6,28 @@ import SessionLabel from './components/SessionLabel';
 
 function App() {
 
-const [sessionLength,setSessionLength] = useState(25);
+const [clock,setClock] = useState({
 
-const [breakLength,setBreakLength] = useState(5);
+  session:25,
+  break: 5
+
+});
 
 const incremenBreakTime = () => {
-  setBreakLength(breakLength + 1)
+  setClock(clock.break++)
+  console.log(typeof(clock.break))
 };
 
 const decrementBreakTime = () => {
-  setBreakLength(breakLength - 1)
+  setClock(clock.break - 1)
 };
 
 const incremenSessionTime = () => {
-  setSessionLength(sessionLength +1)
+  setClock(clock.session +1)
 };
 
 const decrementSessionkTime = () => {
-  setSessionLength(sessionLength  -1)
+  setClock(clock.session  -1)
 };
   return (
     <div className="App">
@@ -33,18 +37,18 @@ const decrementSessionkTime = () => {
       <div className='clock-container'>
         <div className='break-session-controls-container'>
           <BreakLabel 
-            breakLength = { breakLength }
+            breakLength = { clock.break }
             plusBreakTime = { incremenBreakTime } 
             lessBreakTime = { decrementBreakTime } />
           <SessionLabel 
-            sessionLength = { sessionLength } 
+            sessionLength = { clock.session } 
             plusSessionTime = { incremenSessionTime } 
             lessSessionTime = { decrementSessionkTime } />
         </div>
         <div className='display-container'>
           <ClockDisplay 
-          breakLength={breakLength}
-          sessionLength={sessionLength} />
+          breakLength={ clock.break }
+          sessionLength={ clock.session } />
         </div>
       </div>
     </div>
