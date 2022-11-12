@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect, useRef } from "react";
 import BreakLabel from "./components/BreakLabel";
 import ClockDisplay from "./components/ClockDisplay";
 import SessionLabel from "./components/SessionLabel";
@@ -8,45 +8,66 @@ import "./App.css";
 function App() {
   //Session state and functions
   const [sessionLength, setSessionLength] = useState(1500);
+  const [breakLength, setBreakLength] = useState(300);
   const [currentSessionType, setCurrentSessionType] = useState("Session"); //Session or Break
-
   const [intervalId, setIntervalId] = useState(null);
   const [timeLeft, setTimeLeft] = useState(sessionLength);
+  const audioElement = useRef(null);
 
   //change timeLeft when sessionLength changes
   useEffect(() => {
     setTimeLeft(sessionLength);
   }, [sessionLength]);
 
+  //Listen to timeleft changes 
+  //change session to break or break to session
+  useEffect(() =>{
+    //if it is 0
+    if(timeLeft === 0 ){
+      //play the audio
+      audioElement.current.play();
+      if(currentSessionType === 'Session'){
+        setCurrentSessionType('Break');
+        setTimeLeft(breakLength);
+      }else if(currentSessionType === 'Break'){
+        setCurrentSessionType('Session');
+        setTimeLeft(sessionLength);
+      }
+    }
+  },[timeLeft,currentSessionType,sessionLength,breakLength]);
+
   const decrementSessionLength = () => {
     const newSessionLength = sessionLength - 60;
 
-    if (sessionLength < 0) {
-      setSessionLength(0);
-    } else {
+    if (newSessionLength > 0 )  {
       setSessionLength(newSessionLength);
     }
   };
 
   const incrementSessionLength = () => {
-    setSessionLength(sessionLength + 60);
+    const newSessionLength = sessionLength  + 60;
+    if(newSessionLength <= 60 * 60){
+      setSessionLength(newSessionLength);
+    }
+    
   };
 
   //Break State and functions
-  const [breakLength, setBreakLength] = useState(300);
+
 
   const decrementBreakLength = () => {
     const newBreakLength = breakLength - 60;
-
-    if (newBreakLength < 0) {
-      setBreakLength(0);
-    } else {
+    if (newBreakLength > 0 ) {
       setBreakLength(newBreakLength);
     }
   };
 
   const incrementBreakLength = () => {
-    setBreakLength(breakLength + 60);
+    const newBreakLength = breakLength + 60
+
+    if(newBreakLength <= 60 * 60){
+      setBreakLength(newBreakLength);
+    }
   };
 
   //Start Stop click
@@ -60,28 +81,16 @@ function App() {
     } else {
       //Decrement time left bt 1 every second(1000ms)
       const newIntervalId = setInterval(() => {
-        setTimeLeft((prevTimeLeft) => {
-          const newTimeLeft = prevTimeLeft - 1;
-          if (newTimeLeft >= 0) {
-            return prevTimeLeft - 1;
-          }
-          if (currentSessionType === "Session") {
-            //switch to break setTimeLeft to breakSessionLength
-            setCurrentSessionType("Break");
-            setTimeLeft(breakLength);
-          } else if (currentSessionType === "Break") {
-            //Switch to session and set time left to sessionLength
-            setCurrentSessionType("Session");
-            setTimeLeft(sessionLength);
-          }
-        });
-      }, 100); //TODO: change to 1000
-      setIntervalId(newIntervalId);
+        
+        setTimeLeft(prevTimeLeft => prevTimeLeft - 1 );       
+      },1000);//TODO: chango to 1000
     }
   };
 
   //Reset Button
   const handleResetButtonClick = () => {
+    //Reset the audio
+    audioElement.current.load();
     //Clear time out interval
     clearInterval(intervalId);
     //Set the interval to null
@@ -124,6 +133,9 @@ function App() {
             timeLeft={timeLeft}
             timeLabel={currentSessionType} />
         </div>
+        <audio id='beep' ref={audioElement}>
+          <source src= "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" type="audio/mpeg"/>
+        </audio>
       </div>
     </div>
   );

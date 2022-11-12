@@ -7,7 +7,7 @@ import '../stylesheet/SessionLabel.css'
 const SessionLabel = ({ sessionLength, incrementSessionLength, decrementSessionLength }) => {
 
   //Convert seconds in minutes
-  const breakSessionMinutes = moment.duration(sessionLength,'s').minutes();
+  const breakSessionMinutes = moment.duration(sessionLength,'s').asMinutes();
 
   return <div className='session-label' id='session-label'>
           <div className='session-label-title'>
@@ -15,7 +15,7 @@ const SessionLabel = ({ sessionLength, incrementSessionLength, decrementSessionL
           </div>
           <div className='session-label-controls'>
             <GoDash onClick = { decrementSessionLength } id='session-decrement'/>
-            <p id='session-length'>{ breakSessionMinutes }</p>
+            <p id="session-length">{ breakSessionMinutes }</p>
             <GoPlus onClick= { incrementSessionLength } id='session-increment'/>
           </div>
         </div>
