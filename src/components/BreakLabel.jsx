@@ -1,12 +1,12 @@
 import React from "react";
 import { GoDash,GoPlus } from "react-icons/go";
 import moment from "moment/moment";
-
+//CSS imports
 import '../stylesheet/BreakLabel.css'
 
 const BreakLabel = ({ breakLength, incrementBreakLength,decrementBreakLength }) => {
   
-//Convertir segundos en minutos.
+//Convert Seconds in minutes
 const breakLengthMinutes = moment.duration(breakLength,'s').minutes();
 
   return <div className='break-label' id='break-label'>

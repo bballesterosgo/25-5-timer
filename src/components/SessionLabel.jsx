@@ -1,13 +1,12 @@
 import React from "react";
 import moment from "moment/moment";
 import { GoDash,GoPlus } from "react-icons/go";
-
-
+//CSS imports
 import '../stylesheet/SessionLabel.css'
 
 const SessionLabel = ({ sessionLength, incrementSessionLength, decrementSessionLength }) => {
 
-  //Convertir segundos a minutos
+  //Convert seconds in minutes
   const breakSessionMinutes = moment.duration(sessionLength,'s').minutes();
 
   return <div className='session-label' id='session-label'>

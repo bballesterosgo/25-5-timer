@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import moment from "moment/moment";
 import BreakLabel from "./components/BreakLabel";
 import ClockDisplay from "./components/ClockDisplay";
 import SessionLabel from "./components/SessionLabel";
-
+//CSS imports
 import "./App.css";
 
 function App() {
@@ -62,9 +61,8 @@ function App() {
         </div>
         <div className="display-container">
           <ClockDisplay
-            breakLength=''
-            sessionLength=''
-          />
+            breakLength={breakLength}
+            sessionLength={sessionLength} />
         </div>
       </div>
     </div>
