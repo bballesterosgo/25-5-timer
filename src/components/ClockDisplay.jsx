@@ -10,7 +10,7 @@ import '../stylesheet/ClockDisplay.css'
 //MM:SS 25:00
 momentDurationFormatSetup(moment);
 
-function ClockDisplay ({handleStartStopClick,timeLabel,startStopButtonLabel,timeLeft}) {
+function ClockDisplay ({handleStartStopClick,handleResetButtonClick,timeLabel,startStopButtonLabel,timeLeft}) {
 
 //Time format MM:SS 25:00
 const formattedTimeLeft = moment.duration(timeLeft,'s').format('mm:ss',{trim: false})
@@ -23,7 +23,7 @@ const formattedTimeLeft = moment.duration(timeLeft,'s').format('mm:ss',{trim: fa
               { startStopButtonLabel ? <FaRegStopCircle /> : <AiOutlinePlayCircle/>}
             </div>
               <AiOutlinePauseCircle />
-              <AiOutlineSync />
+              <AiOutlineSync onClick={handleResetButtonClick}/>
              </div>
           </div>
 }

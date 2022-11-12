@@ -83,11 +83,17 @@ function App() {
   //Reset Button
   const handleResetButtonClick = () => {
     //Clear time out interval
+    clearInterval(intervalId);
     //Set the interval to null
+    setIntervalId(null);
     //Set sessionType to 'Session'
+    setCurrentSessionType('Session');
     //Set sessionLength to 25 min
+    setSessionLength(60 * 25);
     //Reset break length to 5 min
+    setBreakLength(60 * 5);
     //Reset timer to 25 min
+    setTimeLeft(60 * 25);
   };
 
   return (
@@ -113,6 +119,7 @@ function App() {
             breakLength={breakLength}
             sessionLength={sessionLength}
             handleStartStopClick={handleStartStopClick}
+            handleResetButtonClick={handleResetButtonClick}
             startStopButtonLabel={isStarted}
             timeLeft={timeLeft}
             timeLabel={currentSessionType} />
