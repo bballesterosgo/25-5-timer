@@ -1,28 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { GoDash,GoPlus } from "react-icons/go";
 import moment from "moment/moment";
 
 import '../stylesheet/BreakLabel.css'
 
-const BreakLabel = () => {
+const BreakLabel = ({ breakLength, incrementBreakLength,decrementBreakLength }) => {
   
-const [breakLength,setBreakLength] = useState(300);
-
-
-const decrementBreakLength = () => {
-  const newBreakLength = breakLength - 60;
-
-  if(newBreakLength < 0){
-    setBreakLength(0);
-  }else  {
-    setBreakLength(newBreakLength);
-  }
-  
-};
-
-const incrementBreakLength = () => {
-  setBreakLength(breakLength + 60)
-};
 //Convertir segundos en minutos.
 const breakLengthMinutes = moment.duration(breakLength,'s').minutes();
 

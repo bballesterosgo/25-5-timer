@@ -1,26 +1,12 @@
-import React, { useState } from "react";
-import { GoDash,GoPlus } from "react-icons/go";
+import React from "react";
 import moment from "moment/moment";
+import { GoDash,GoPlus } from "react-icons/go";
+
 
 import '../stylesheet/SessionLabel.css'
 
-const SessionLabel = () => {
+const SessionLabel = ({ sessionLength, incrementSessionLength, decrementSessionLength }) => {
 
-  const [sessionLength, setSessionLength] = useState(1500);
-
-  const decrementSessionLength = () => {
-    const newSessionLength = sessionLength - 60;
-    
-    if(sessionLength < 0){
-      setSessionLength(0);
-    }else{
-      setSessionLength(newSessionLength);
-    }
-  };
-
-  const incrementSessionLength = () => {
-    setSessionLength(sessionLength + 60)
-  };
   //Convertir segundos a minutos
   const breakSessionMinutes = moment.duration(sessionLength,'s').minutes();
 
